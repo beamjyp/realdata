@@ -4,7 +4,7 @@
       <Logo />
     </div>
     <div v-if="b" id="eie">
-      <Indexpage />
+      <Getstarted />
       <Nav />
     </div>
   </div>

@@ -4,13 +4,30 @@
       <Logo />
     </div>
     <div v-if="b" id="eie">
-      <Indexpage />
-      <Nav />
+      <Dashboard />
     </div>
   </div>
 </template>
 <script>
+import { getUserFromCookie } from '@/helper'
+import * as firebase from 'firebase/app'
+import 'firebase/auth'
 export default {
+  asyncData({ req, redirect }) {
+    if (process.server) {
+      const user = getUserFromCookie(req)
+      console.log('eiei')
+      console.log(user)
+      if (!user) {
+        redirect('/')
+      }
+    } else {
+      const user = firebase.auth().currentUser
+      if (!user) {
+        redirect('/')
+      }
+    }
+  },
   data() {
     return {
       a: true,
@@ -35,6 +52,7 @@ export default {
   align-items: center;
   text-align: center;
 }
+
 .title {
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;

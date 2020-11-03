@@ -4,7 +4,8 @@
       <Logo />
     </div>
     <div v-if="b" id="eie">
-      <Indexpage />
+      <div class="top"><About /></div>
+
       <Nav />
     </div>
   </div>
@@ -35,6 +36,7 @@ export default {
   align-items: center;
   text-align: center;
 }
+
 .title {
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -55,5 +57,8 @@ export default {
 
 .links {
   padding-top: 15px;
+}
+.top {
+  margin-top: -100px;
 }
 </style>
